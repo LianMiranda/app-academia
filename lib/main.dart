@@ -61,15 +61,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               _buildPage(
                   imagePath: '../assets/tela1.png',
                   title: 'Start your journey towards a more active lifestyle',
-                  icon: Icons.restaurant_menu),
+                  icon: Icons.directions_run_sharp),
               _buildPage(
                   imagePath: '../assets/tela2.png',
                   title: 'Find nutrition tips that fit your lifestyle',
-                  icon: Icons.accessibility_new),
+                  icon: Icons.breakfast_dining),
               _buildPage(
                   imagePath: '../assets/tela3.png',
                   title: 'A community for you, challenge yourself',
-                  icon: Icons.fitness_center),
+                  icon: Icons.group),
             ],
           ),
           Positioned(
@@ -146,6 +146,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   softWrap: true, 
                   overflow: TextOverflow.visible,
                 ),
+                SizedBox(height: 20),
                 TabPageSelector(
                       controller: _tabController,
                       color: Colors.grey.shade400,
