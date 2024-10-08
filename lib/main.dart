@@ -12,12 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'App academia',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'App academia'),
     );
   }
 }
@@ -52,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var _textButton = "Next";
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -105,47 +103,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * 0.3,
-            left: 0,
-            right: 0,
-            child: Column(
-              children: [
-                TabPageSelector(
-                  controller: _tabController,
-                  color: Colors.grey.shade400,
-                  selectedColor: Colors.white,
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_currentPageIndex == 2) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(), // Nova página
-                        ),
-                      );
-                    } else {
-                      _nextPage();
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    backgroundColor: Colors.grey.withOpacity(0.5),
-                  ),
-                  child: Text(_currentPageIndex == 2 ? "Get Started" : "Next",
-                      style: TextStyle(fontSize: 14, color: Colors.white)),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ]
+      )
     );
+        
   }
 
  Widget _buildPage({required String imagePath, required String title, required IconData icon}) {
@@ -160,10 +121,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 1, // 80% da largura da tela
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20), // Ajuste o padding conforme necessário
+            width: MediaQuery.of(context).size.width * 1, 
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             decoration: BoxDecoration(
-              color: Colors.purple.withOpacity(0.7), // Cor de fundo roxa
+              color: Color.fromRGBO(179, 160, 255, 1), 
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -182,18 +143,48 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
-                  softWrap: true, // Quebra o texto em várias linhas automaticamente
-                  overflow: TextOverflow.visible, // Evita o corte de texto
+                  softWrap: true, 
+                  overflow: TextOverflow.visible,
+                ),
+                TabPageSelector(
+                      controller: _tabController,
+                      color: Colors.grey.shade400,
+                      selectedColor: Colors.white,
                 ),
               ],
             ),
           ),
+             SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_currentPageIndex == 2) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(), 
+                        ),
+                      );
+                    } else {
+                      _nextPage();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      side: BorderSide(color: Colors.white, width: 1)
+                    ),
+                    backgroundColor: Color.fromRGBO(0, 0, 0, 0.25),
+
+                  ),
+                  child: Text(_currentPageIndex == 2 ? "Get Started" : "Next",
+                      style: TextStyle(fontSize: 14, color: Colors.white)),
+                ),
         ],
       ),
     ],
   );
 }
-
   void _nextPage() {
     _pageViewController.animateToPage(
       (_currentPageIndex + 1) % 3,

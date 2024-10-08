@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/telas/forgetPass.dart';
 import 'package:flutter_application_1/telas/singup.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,6 +17,16 @@ class LoginPage extends StatelessWidget {
         title: Text("Log In",
             style: TextStyle(color: Color.fromRGBO(226, 241, 99, 1))),
         backgroundColor: Color.fromRGBO(35, 35, 35, 1),
+        leading:  IconButton(
+            icon: Transform.rotate(
+            angle: 3.14, 
+            child: Icon(Icons.play_arrow), 
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+            color: Color.fromRGBO(226, 241, 99, 1),
+        ),
       ),
       body: Container(
         child: Column(
@@ -46,21 +57,20 @@ class LoginPage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(20),
               width: MediaQuery.of(context).size.width * 1,
-              height: MediaQuery.of(context).size.height * 0.25,
               decoration: BoxDecoration(
                 color: Color.fromRGBO(179, 160, 255, 1), // Cor de fundo roxa
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Username or email", // Label para o campo de e-mail
+                  Text("Username or email", 
                       style: TextStyle(color: Colors.black, fontSize: 16)),
                   CupertinoTextField(
                     cursorColor: Colors.black,
                     padding: EdgeInsets.all(15),
                     placeholder: "example@example.com",
                     placeholderStyle:
-                        TextStyle(color: Colors.black, fontSize: 14),
+                        TextStyle(color: Colors.grey, fontSize: 14),
                     style: TextStyle(color: Colors.black, fontSize: 14),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -71,7 +81,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    "Password", // Label para o campo de e-mail
+                    "Password", 
                     style: TextStyle(color: Colors.black, fontSize: 16),
                   ),
                   CupertinoTextField(
@@ -79,7 +89,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(15),
                     placeholder: "*************",
                     placeholderStyle:
-                        TextStyle(color: Colors.black, fontSize: 14),
+                        TextStyle(color: Colors.grey, fontSize: 14),
                     style: TextStyle(color: Colors.black, fontSize: 14),
                     obscureText: true, // Ocultar senha
                     decoration: BoxDecoration(
@@ -148,7 +158,36 @@ class LoginPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  SignUpPage(), // Direciona para outra página
+                                  SignUpPage(), 
+                            ),
+                          );
+                        },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 3),
+              child: RichText(
+                text: TextSpan(
+                  text: "Forget your password? ",
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "Recover here!",
+                      style: TextStyle(
+                        color: Color.fromRGBO(179, 160, 255, 1),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ForgetPassPage(), 
                             ),
                           );
                         },
