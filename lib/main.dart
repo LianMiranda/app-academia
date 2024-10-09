@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/telas/login.dart';
+import 'package:flutter_application_1/telas/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,14 +10,18 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+ Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'App academia',
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'App academia'),
+      initialRoute: '/welcome',
+      routes: {
+        '/welcome': (context) => WelcomeScreen(),  
+        '/home': (context) => MyHomePage(title: 'Home Page'),  
+      },
     );
   }
 }
@@ -90,13 +95,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.yellowAccent,
+                      color: Color.fromRGBO(226, 241, 99, 1),
                       fontSize: 16,
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward,
-                    color: Colors.yellowAccent,
+                    color: Color.fromRGBO(226, 241, 99, 1),
                     size: 18,
                   ),
                 ],
@@ -132,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 Icon(
                   icon,
                   size: 60,
-                  color: Colors.yellowAccent,
+                  color: Color.fromRGBO(226, 241, 99, 1),
                 ),
                 const SizedBox(height: 20),
                 Text(
