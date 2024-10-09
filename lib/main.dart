@@ -180,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(color: Colors.white, width: 1)
                     ),
-                    backgroundColor: Color.fromRGBO(0, 0, 0, 0.25),
+                    backgroundColor: Color.fromRGBO(255, 255, 255, 0.09),
 
                   ),
                   child: Text(_currentPageIndex == 2 ? "Get Started" : "Next",
