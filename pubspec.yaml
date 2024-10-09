@@ -38,13 +38,10 @@ dependencies:
 
 flutter_native_splash:
   color: "#232323"  
-  image: "assets/Group.png"
+  image: "assets/images/logoCompleta.png"
+  web: true
   android: true  
   fullscreen: true  
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
 
 
 
@@ -74,13 +71,12 @@ flutter:
 
   
   assets:
-    - assets/tela1.png
-    - assets/tela2.png
-    - assets/tela3.png
-    - assets/Group.png
-    - assets/GroupNormal.png
-    - assets/FITBODY.png
-    - assets/telaWelcome.png
+    - assets/images/tela1.png
+    - assets/images/tela2.png
+    - assets/images/tela3.png
+    - assets/images/Group.png
+    - assets/images/FITBODY.png
+    - assets/images/telaWelcome.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

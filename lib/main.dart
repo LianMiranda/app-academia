@@ -64,15 +64,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             onPageChanged: _handlePageViewChanged,
             children: <Widget>[
               _buildPage(
-                  imagePath: '../assets/tela1.png',
+                  imagePath: '../assets/images/tela1.png',
                   title: 'Start your journey towards a more active lifestyle',
                   icon: Icons.directions_run_sharp),
               _buildPage(
-                  imagePath: '../assets/tela2.png',
+                  imagePath: '../assets/images/tela2.png',
                   title: 'Find nutrition tips that fit your lifestyle',
                   icon: Icons.breakfast_dining),
               _buildPage(
-                  imagePath: '../assets/tela3.png',
+                  imagePath: '../assets/images/tela3.png',
                   title: 'A community for you, challenge yourself',
                   icon: Icons.group),
             ],
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LoginPage(), // Nova página
+                      builder: (context) => LoginPage(), 
                     ),
                   );
               },

@@ -55,33 +55,32 @@ class SetPasswordPage extends StatelessWidget {
                   children: [
                     Text(
                       "Password",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(height: 10), 
                     CupertinoTextField(
                       obscureText: true,
                       cursorColor: Colors.black,
                       padding: EdgeInsets.all(15),
                       placeholder: "*************",
                       placeholderStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      style: TextStyle(color: Colors.black, fontSize: 14),
+                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                     ),
+                    SizedBox(height: 10),
                     Text(
                       "Confirm Password",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(height: 10), 
                     CupertinoTextField(
                       obscureText: true,
                       cursorColor: Colors.black,
                       padding: EdgeInsets.all(15),
                       placeholder: "*************",
                       placeholderStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      style: TextStyle(color: Colors.black, fontSize: 14),
+                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(12)),

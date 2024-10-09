@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,29 @@ import 'package:flutter_application_1/telas/login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+class User {
+  final String fullName;
+  final String emailOrNumber;
+  final String password;
+
+  User({required this.fullName, required this.emailOrNumber, required this.password});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'fullName': fullName,
+      'emailOrNumber': emailOrNumber,
+      'password': password,
+    };
+  }
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      fullName: json['fullName'],
+      emailOrNumber: json['emailOrNumber'],
+      password: json['password'],
+    );
+  }
+}
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
@@ -28,14 +53,22 @@ class SignUpPage extends StatelessWidget {
         return; 
     }
     
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('fullName', nameController.text);
-    await prefs.setString('emailorNumber', emailOrNumberController.text);
-    await prefs.setString('password', passwordController.text);
+    User user = User(
+    fullName: nameController.text,
+    emailOrNumber: emailOrNumberController.text,
+    password: passwordController.text,
+  );
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Cadastro salvo com sucesso!')),
-    );
+  String userJson = jsonEncode(user.toJson());
+
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString('user', userJson);
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text('Cadastro salvo com sucesso!')),
+  );
+
+  print(userJson);
   }
     return Scaffold(
       backgroundColor: Color.fromRGBO(35, 35, 35, 1),
@@ -80,7 +113,7 @@ class SignUpPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Full name",
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                      style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500)),
                   CupertinoTextField(
                     controller: nameController,
                     cursorColor: Colors.black,
@@ -88,7 +121,7 @@ class SignUpPage extends StatelessWidget {
                     placeholder: "Fulano de Souza",
                     placeholderStyle:
                         TextStyle(color: Colors.grey, fontSize: 14),
-                    style: TextStyle(color: Colors.black, fontSize: 14),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(
@@ -98,7 +131,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Text("Email or Mobile Number",
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                      style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500)),
                   CupertinoTextField(
                     controller: emailOrNumberController,
                     cursorColor: Colors.black,
@@ -106,7 +139,7 @@ class SignUpPage extends StatelessWidget {
                     placeholder: "example@example.com or +123 567 89000",
                     placeholderStyle:
                         TextStyle(color: Colors.grey, fontSize: 14),
-                    style: TextStyle(color: Colors.black, fontSize: 14),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(
@@ -116,7 +149,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Text("Password",
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                      style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500)),
                   CupertinoTextField(
                     obscureText: true,
                     controller: passwordController,
@@ -125,7 +158,7 @@ class SignUpPage extends StatelessWidget {
                     placeholder: "*************",
                     placeholderStyle:
                         TextStyle(color: Colors.grey, fontSize: 14),
-                    style: TextStyle(color: Colors.black, fontSize: 14),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(
@@ -136,7 +169,7 @@ class SignUpPage extends StatelessWidget {
                   SizedBox(height: 20),
                   Text(
                     "Confirm Password", 
-                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   CupertinoTextField(
                     controller: confirmPasswordController,
@@ -145,7 +178,7 @@ class SignUpPage extends StatelessWidget {
                     placeholder: "*************",
                     placeholderStyle:
                         TextStyle(color: Colors.grey, fontSize: 14),
-                    style: TextStyle(color: Colors.black, fontSize: 14),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                     obscureText: true, // Ocultar senha
                     decoration: BoxDecoration(
                       color: Colors.white,

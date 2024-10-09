@@ -10,10 +10,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Navega automaticamente para a tela principal após 3 segundos
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(
-          context, '/home'); // Mude para a tela principal
+          context, '/home'); 
     });
   }
 
@@ -29,7 +28,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               BlendMode.darken,
             ),
             child: Image.asset(
-              'assets/telaWelcome.png',
+              'assets/images/telaWelcome.png',
               fit: BoxFit.cover,
             ),
           ),
@@ -46,9 +45,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Image.asset("assets/GroupNormal.png", width: 182.37, height: 84.76,),
-                SizedBox(height: 5),
-                Image.asset("assets/FITBODY.png", width: 374.09, height: 81.05,)
+                Image.asset("assets/images/Group.png", width: 182.37, height: 84.76,),
+                Image.asset("assets/images/FITBODY.png", width: 800, height: 81.05,)
               ],
             ),
           ),
