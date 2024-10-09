@@ -96,15 +96,16 @@ class SetPasswordPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: (){},
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 65, vertical: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
+                    side: BorderSide(color: Colors.white, width: 1)
                   ),
-                  backgroundColor: Colors.grey.withOpacity(0.5),
+                backgroundColor: Color.fromRGBO(255, 255, 255, 0.09),
                 ),
                 child: Text(
                   "Reset Password",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
                 ),
               ),
             ),

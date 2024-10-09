@@ -99,20 +99,43 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
+                  SizedBox(height: 20),
+                 Align(
+                    alignment: Alignment.bottomRight,
+                    child:  RichText(
+                      text: TextSpan(
+                        text: "Forgot password?",
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ForgetPassPage(),
+                              ),
+                            );
+                          },
+                      ),
+                      textAlign: TextAlign.end,
+                    ),
+                  )
+
+                ]
               ),
             ),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 65, vertical: 20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                backgroundColor: Colors.grey.withOpacity(0.5),
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    side: BorderSide(color: Colors.white, width: 1)
+                  ),
+              backgroundColor: Color.fromRGBO(255, 255, 255, 0.09),
               ),
               child: Text("Log In",
-                  style: TextStyle(fontSize: 18, color: Colors.white)),
+                  style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700)),
             ),
             Text("or sign up with",
                 style: TextStyle(fontSize: 14, color: Colors.white)),
@@ -159,35 +182,6 @@ class LoginPage extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) =>
                                   SignUpPage(), 
-                            ),
-                          );
-                        },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 3),
-              child: RichText(
-                text: TextSpan(
-                  text: "Forget your password? ",
-                  style: TextStyle(color: Colors.white, fontSize: 14),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "Recover here!",
-                      style: TextStyle(
-                        color: Color.fromRGBO(179, 160, 255, 1),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ForgetPassPage(), 
                             ),
                           );
                         },

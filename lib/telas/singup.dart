@@ -195,16 +195,17 @@ class SignUpPage extends StatelessWidget {
               child:  Text("By continuing, you agree to Terms of Use and Privacy Policy.",
                             style: TextStyle(fontSize: 14, color: Colors.white))),
             ElevatedButton(
-              onPressed:_saveUser,
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 65, vertical: 20),
+            onPressed:_saveUser,
+             style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
+                  side: BorderSide(color: Colors.white, width: 1)
                 ),
-                backgroundColor: Colors.grey.withOpacity(0.5),
+              backgroundColor: Color.fromRGBO(255, 255, 255, 0.09),
               ),
               child: Text("Sing Up",
-                  style: TextStyle(fontSize: 18, color: Colors.white)),
+                  style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700)),
             ),
             Text("or sign up with",
                 style: TextStyle(fontSize: 14, color: Colors.white)),
